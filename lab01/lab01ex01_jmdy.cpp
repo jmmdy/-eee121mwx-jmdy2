@@ -3,23 +3,27 @@
 using namespace std;
 
 int gcd(int input1, int input2) {
-    int rem;
+    int rem = 0;
+    int greaternum = input1;
+    int smallernum = input2;
     if (input2 > input1) { //incase input2 is greater than input1
-        int newnum;
-        newnum = input1;
-        input1 = input2;
-        input2 = newnum;
-    };
-    rem = input1 % input2; //gets the remainder of the two numbers
-    input1 = input2; //changes input1 with input2 for the next loop
-    input2 = rem; 
 
+        greaternum = input2;
+        smallernum = input1;
+    };
     
-    return int(input2);
+    while (smallernum != 0) {
+        rem = greaternum % smallernum; //gets the remainder of the two numbers
+        greaternum = smallernum; //changes input1 with input2 for the next loop
+        smallernum = rem; 
+    }
+    
+    return int(greaternum);
 }
 int lcm(int input1, int input2) {
     int lcm;
-    lcm = input1*input2/gcd(input1, input2); //equation for the lcm
+    int gcd1 = gcd(input1, input2);
+    lcm = (input1 * input2)/gcd1; //equation for the lcm
     return lcm;
 }
 
