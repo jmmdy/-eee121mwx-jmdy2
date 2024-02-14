@@ -34,11 +34,12 @@ int main() {
                 for(int k = 0; k < 5; k++){ //extra variable for dot product
                     arrmul[i][j] += arr1[i][k] * arr2[k][j]; //formula
         }}};
-        for(int j = 0; j < 5; j++) {
-            for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 5; i++) {
+            for(int j = 0; j < 5; j++) {
                 cout << arrmul[i][j] << " ";
-                if (i == 4)
+                if (j == 4)
                     cout << endl;
+                
         }};
         
 return 0; 
