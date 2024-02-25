@@ -59,7 +59,7 @@ void Pair<T>::show_pair() {
 }
 
 template<>
-void Pair<int>::show_pair() {
+void Pair<double>::show_pair() {
     cout << this -> first << endl;
 }
 
@@ -72,53 +72,36 @@ Pair<T> Pair<T>::operator+(Pair b) {
 template<typename T>
 Pair<T> Pair<T>::operator/(Pair b) {
     string finalval, finalvalb;
-    if ((first.length()) > (second.length())) { //compare first pair
-        finalval = first;
-    } else {
-        (finalval = second);
+    string allstrings = first + second + b.first + b.second; //add all the strings together 
+    int mostchar;
+    int mostcounter = 0;
+    for(int i=93;i<=123;i++){ //ASCII of lowercase letters
+        int counter = 0;
+        int n = allstrings.length();
+        for(int j=0 ;j<n ; j++){ //run through all the chars in the "allstrings"
+            if(i == allstrings[j]){
+                counter++;} //count how many occurences
+        if(mostcounter <= counter){ //if there is a char with a greater occurence, take note
+            mostchar = i;
+            mostcounter = counter;   
+        }}}
 
-    };
-
-    if ((b.first.length()) > (b.second.length())) {// compare second pair
-        finalvalb = b.first;
-    } else {
-        (finalval = b.second);
-    };
-
-    if ((finalval.length()) > (finalvalb.length())) { //compare both pairs
-        finalval = finalval;
-    } else {
-        (finalval = finalvalb);
-    };
-
-    first = finalval[0]; //get the most recurred value
-    // float finallength = finalval.size();
-    second = finalval.size(); //get the length of this value
-
-    return Pair(this -> first,
-                this -> second);
+    first = mostchar; //get the most recurred char
+    second = to_string(mostcounter); //turn into string so that there is no error as it passes through pair
+    return Pair<T>(first, second);
 }
 
 template<>
-Pair<int> Pair<int>::operator/(Pair<int> b) {
-    float finalval = first + second + b.first + b.second; //average equation
-    float finalave = finalval / 4;
+Pair<double> Pair<double>::operator/(Pair<double> b) { 
+    double finalval = first + second + b.first + b.second; //average equation
+    double finalave = finalval / 4;
     cout << finalave << endl;
-    // first = finalave;
-    // second = 0;
-
-    // return Pair(this -> first,
-    //             this -> second);
 };
 
 int main() {
     string input1, input2, input3, input4;
-    int input5, input6, input7, input8;
-    // Pair<string> p_str = Pair<string>("Banana B1", "Banana B2");
-    // Pair<int> p_int = Pair<int>(3,5);
+    double input5, input6, input7, input8; //double to make sure most, if not, all numbers with decimals are accepted
 
-    // p_str.show_pair();
-    // p_int.show_pair();
     cin >> input1;
     cin >> input2;
     cin >> input3;
@@ -129,8 +112,8 @@ int main() {
     cin >> input8;
     Pair<string> p1 = Pair<string>(input1, input2);
     Pair<string> p2 = Pair<string>(input3, input4);
-    Pair<int> p3 = Pair<int>(input5, input6);
-    Pair<int> p4 = Pair<int>(input7, input8);
+    Pair<double> p3 = Pair<double>(input5, input6);
+    Pair<double> p4 = Pair<double>(input7, input8);
     (p1/p2).show_pair();
     (p3/p4).show_pair();
 
