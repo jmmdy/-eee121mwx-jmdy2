@@ -1,6 +1,7 @@
 
 #include <iostream> 
 #include <bitset> 
+#include <algorithm>
 using namespace std; 
 
 void recurse(string a, int n, int m) 
@@ -9,7 +10,7 @@ void recurse(string a, int n, int m)
 		cout << a << endl; 
 	else { 
 		for (int i = n; i < m; i++) { 		//n determines the item in the array that will be "focused", m is the string length
-			if ((a[i] == a[n] && i != n) && (i>n && a[i] == a[i-1])) { //to check for duplicates
+			if ((a[i] == a[n] && i != n) || (i>n && a[i] == a[i-1])) { //to check for duplicates
 				continue;
 			} else {
 				swap(a[n], a[i]); 			//swaps 
@@ -24,6 +25,7 @@ int main()
 { 
 	string input1;
 	cin >> input1;
+	sort(input1.begin(), input1.end()); //sorts the input string
 	recurse(input1, 0, input1.length()); //starting at 0
 	return 0; 
 } 
