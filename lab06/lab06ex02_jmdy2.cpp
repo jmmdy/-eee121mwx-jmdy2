@@ -171,6 +171,12 @@ int main()
                 }
             }
         }
+
+        for(int i=0; i<m; i++) {
+            if (a[i] == a[i-1])
+                {a[i] = (a[i] + 1);}
+        }
+
         counter = 0;
         inputdel = 0;
         for (int i = 0; i < m; i++) {
