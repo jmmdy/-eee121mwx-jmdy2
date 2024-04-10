@@ -5,7 +5,7 @@
 using namespace std;
 
 #define E_ILLEGAL 420
-#define DEBUG_MODE 0
+#define DEBUG_MODE = 1
 #define USER_MODE 1
 
 const unsigned int MODE = USER_MODE;
@@ -148,7 +148,7 @@ int main()
     int tinput, n, input1, m, inputdel, counter;
     
     cin >> tinput;
-    for (int i = 0; i < tinput;) {
+    for (int i = 0; i < tinput; i++) {
         // list.printList();
         cin >> n;
         for (int i = 0; i < n; i++) {
