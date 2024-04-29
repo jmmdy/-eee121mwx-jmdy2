@@ -22,12 +22,12 @@ int main() {
     adj_list.resize(N);
     visited = new bool[N];
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) { //initialize matrix with 0
         for (int j = 0; j < N; j++) {
             adj_mat[i][j] = 0;
         }}
 
-    for(int i = 0; i < M; i++) {
+    for(int i = 0; i < M; i++) { //mark the adjacent nodes with 1
         cin >> u >> v;
         adj_mat[u][v] = 1;
         // adj_mat[v][u] = 1;
@@ -58,8 +58,8 @@ int main() {
             cout << char(u + 'A') << " ";
             for(size_t i = 0; i < N; i++) {
                 int v = i;
-                if(!visited[v]) {
-                    visited[v] = true;
+                if(!visited[v] && (adj_mat[u][v] == 1)) { //will push to queue only if v is adjacent to u
+                    visited[v] = true; // if visited, will never return to it
                     bfs_queue.push(i);
                 }
             }
@@ -86,9 +86,9 @@ int main() {
             int u = dfs_stack.top();
             dfs_stack.pop();
             cout << char(u + 'A') << " ";
-            for(int i = 0; i < N; i++) {
+            for(size_t i = 0; i < N; i++) {
                 int v = i;
-                if(!visited[v]) {
+                if(!visited[v] && (adj_mat[u][v] == 1)) { //will push to stack only if v is adjacent to u
                     visited[v] = true;
                     dfs_stack.push(v);
                 }

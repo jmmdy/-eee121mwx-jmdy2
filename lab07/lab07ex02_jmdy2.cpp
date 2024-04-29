@@ -55,20 +55,18 @@ int main() {
     }
 
     queue<int> topo_stack;
-
+    // topo_stack.push(0);
     for(int i =0; i < N; i++) {
         if(!visited[i]) {
             toposort(i, adj_list, visited, topo_stack);
         }
     }
-    printAdjList(adj_list, apparel[topo_stack.front()] );
+    // printAdjList(adj_list, apparel[topo_stack.front()] );
 
     while(!topo_stack.empty()) {
         cout << apparel[topo_stack.front()];
         topo_stack.pop();
-        if(topo_stack.size()) {
-            cout << " -> ";
-        }
+
     }
     // while(!topo_stack.empty()) {
     //     cout << apparel[topo_stack.top()];
