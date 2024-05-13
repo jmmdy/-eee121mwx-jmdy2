@@ -6,15 +6,15 @@
 
 using namespace std;
 
-void printAdjList(vector<vector<int>> &adj_list,vector<string> &apparel) {
-    for (int i = 0; i < adj_list.size(); i++) {
-        cout << apparel[i] << "->";
-        for (int v : adj_list[i]) {
-            cout << apparel[v] << " ";
-        }
-        cout << endl;
-    }
-}
+// void printAdjList(vector<vector<int>> &adj_list,vector<string> &apparel) {
+//     for (int i = 0; i < adj_list.size(); i++) {
+//         cout << apparel[i] << "->";
+//         for (int v : adj_list[i]) {
+//             cout << apparel[v] << " ";
+//         }
+//         cout << endl;
+//     }
+// }
 
 
 void toposort(int u, vector< vector<int> > &adj_list, bool* visited, queue<int> &topo_stack) {
@@ -26,7 +26,7 @@ void toposort(int u, vector< vector<int> > &adj_list, bool* visited, queue<int> 
             toposort(v,adj_list,visited,topo_stack);
         }
     }
-
+    
     topo_stack.push(u);
 }
 
