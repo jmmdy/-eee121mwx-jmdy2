@@ -40,6 +40,7 @@ int main() {
     int userinput;
     cin >> userinput;
     if (userinput == 1){
+        
         queue<int> bfs_queue;   
     
         bfs_queue.push(0);
@@ -75,7 +76,7 @@ int main() {
         stack<int> dfs_stack;
         dfs_stack.push(0);
         
-        visited[0] = true;
+        // visited[0] = true;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 cout << adj_mat[i][j] << " ";
@@ -85,14 +86,26 @@ int main() {
         while(!dfs_stack.empty()) {
             int u = dfs_stack.top();
             dfs_stack.pop();
-            cout << char(u + 'A') << " ";
-            for(size_t i = 0; i < N; i++) {
-                int v = i;
-                if(!visited[v] && (adj_mat[u][v] == 1)) { //will push to stack only if v is adjacent to u
-                    visited[v] = true;
-                    dfs_stack.push(v);
+
+            if (visited[u] == false) {
+                visited[u] = true;
+                cout << char(u + 'A') << " ";
+                for(size_t i = 0; i < N; i++) {
+                    int v = i;
+                    if(!visited[v] && (adj_mat[u][v] == 1)) {
+                         dfs_stack.push(v);
+                         
+                    }
                 }
             }
+            
+            // for(size_t i = 0; i < N; i++) {
+            //     int v = i;
+            //     if(!visited[v] && (adj_mat[u][v] == 1)) { //will push to stack only if v is adjacent to u
+            //         visited[v] = true;
+            //         dfs_stack.push(v);
+            //     }
+            // }
         }
 
         cout << endl;
